@@ -1,0 +1,8 @@
+{
+    "require": {
+        "catfan/medoo": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9"
+    }
+}
