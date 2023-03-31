@@ -1,5 +1,12 @@
 <?php
 
-require 'vendor/autoload.php';
-require 'config.php';
-require 'database.php';
+require_once('vendor/autoload.php');
+require_once('config.php');
+require_once('database.php');
+require_once('product_controller.php');
+require_once('product_types_controller.php');
+
+
+/* 
+echo "<pre>";
+var_dump(get_product_types(1)); */
