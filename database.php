@@ -1,13 +1,13 @@
 <?php
 
-// Require Composer's autoloader.
-
 
 // Using Medoo namespace.
 use Medoo\Medoo;
 
+
+
 // Connect the database.
-global $database = new Medoo([
+$database = new Medoo([
     'type' => 'pgsql',
     'host' => $host,
     'database' => $database,
@@ -15,7 +15,10 @@ global $database = new Medoo([
     'password' => $password
 ]);
 
+global $db;
 $db = $database;
+
+
 /* 
 $database->insert('account', [
     'user_name' => 'foo',

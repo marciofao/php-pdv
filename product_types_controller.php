@@ -1,6 +1,7 @@
 <?php
 
-function insert_product_type($name, $tax_percent) {
+function set_product_type($name, $tax_percent) {
+    global $db;
     return $db->insert('product_type', [
         'name' => $name,
         'tax_percecnt' => $tax_percent
@@ -8,9 +9,16 @@ function insert_product_type($name, $tax_percent) {
 }
 
 function get_product_types() {
-    return $db->select('product_type', "*");
+    global $db;
+    return $db->select('product_types', "*");
 }
 
 function get_product_type($id) {
-    return $db->select('product_type', "*", ["id" => $id]);
+    global $db;
+    return $db->select('product_types', "*", ["id" => $id]);
+}
+
+function delete_product_type($id) {
+    global $db;
+    return $db->delete('product_types', ["id"=>$id])
 }
