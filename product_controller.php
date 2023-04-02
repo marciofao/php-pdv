@@ -2,27 +2,33 @@
 
 function set_product($name, $value, $product_type_id) {
     global $db;
-     $db->insert('products', [
-        'name' => $name,
-        'value' => $value,
-        'product_type_id' => $product_type_id
-    ]);
-    //return last id
-    return $db->id();
+    if (
+        $db->insert('products', [
+            'name'            => $name,
+            'value'           => $value,
+            'product_type_id' => $product_type_id,
+        ])
+    ) {
+        //return last id
+        return $db->id();
+    } else {
+        return $db->error;
+    }
+
 }
 
 function get_products() {
     global $db;
     return $db->select('products', [
-        "[>]product_types" => ["product_type_id" => "id"]
-    ], ["products.id",  "products.name", "products.value", "product_type_id", "product_types.name (product_type)", "tax_percent"]);
+        "[>]product_types" => ["product_type_id" => "id"],
+    ], ["products.id", "products.name", "products.value", "product_type_id", "product_types.name (product_type)", "tax_percent"]);
 }
 
 function get_product($id) {
     global $db;
     return $db->select('products', [
-        "[>]product_types" => ["product_type_id" => "id"]
-    ], ["products.id",  "products.name", "products.value", "product_type_id", "product_types.name (product_type)", "tax_percent"], ["products.id" => $id]);
+        "[>]product_types" => ["product_type_id" => "id"],
+    ], ["products.id", "products.name", "products.value", "product_type_id", "product_types.name (product_type)", "tax_percent"], ["products.id" => $id]);
 }
 
 function delete_product($id) {
