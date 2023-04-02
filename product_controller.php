@@ -2,11 +2,13 @@
 
 function set_product($name, $value, $product_type_id) {
     global $db;
-    return $db->insert('products', [
+     $db->insert('products', [
         'name' => $name,
         'value' => $value,
         'product_type_id' => $product_type_id
     ]);
+    //return last id
+    return $db->id();
 }
 
 function get_products() {
