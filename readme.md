@@ -20,6 +20,6 @@ Para iniciar a aplicação: `php -S localhost:8080`
 
 #Testes
 
-Testes podem ser executados com o comando:
+Testes podem ser executados no PHPUnit com o comando no terminal:
 
-./vendor/bin/phpunit tests
+`./vendor/bin/phpunit tests`
