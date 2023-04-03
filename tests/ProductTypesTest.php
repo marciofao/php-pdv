@@ -9,13 +9,10 @@ require_once('config.php');
 require_once('database.php');
 require_once('product_controller.php');
 require_once('product_types_controller.php');
-
-
 final class ProductTypesTest extends TestCase {
     public $insert_id = '';
     public $name = 'teste';
     public $type_tax = 3.3;
-
     public function testProductTypes() {
 
         $this->insert_id = set_product_type($this->name, $this->type_tax);
@@ -46,7 +43,5 @@ final class ProductTypesTest extends TestCase {
         //clean up
         delete_product_type($type_id);
         delete_product_type($insert_id_2);
-
     }
-
 }
