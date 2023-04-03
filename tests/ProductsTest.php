@@ -20,7 +20,7 @@ final class ProductTest extends TestCase {
 
     public function testProduct() {
         $type_id = set_product_type($this->type, $this->type_tax);
-        var_dump($type_id);
+
         $this->insert_id = set_product($this->name, $this->value, $type_id);
         //verify if ID is returned
         $this->assertTrue(is_numeric($this->insert_id));
@@ -34,6 +34,25 @@ final class ProductTest extends TestCase {
 
         //clean up
         delete_product($this->insert_id);
+        delete_product_type($type_id);
+    }
+
+    public function testGetProducts() {
+        $type_id = set_product_type($this->type, $this->type_tax);
+
+        $this->insert_id = set_product($this->name, $this->value, $type_id);
+        $insert_id_2     = set_product('testing', 1.1, $type_id);
+        //verify if ID is returned
+
+        $res = get_products();
+
+        //verify if multiple results are returned
+        $this->assertTrue(is_array($res));
+        $this->assertTrue(sizeof($res) > 1);
+
+        //clean up
+        delete_product($this->insert_id);
+        delete_product($insert_id_2);
         delete_product_type($type_id);
     }
 
