@@ -3,9 +3,9 @@
 function set_product_type($name, $tax_percent) {
     global $db;
     if (
-        $db->insert('product_type', [
-            'name'         => $name,
-            'tax_percecnt' => $tax_percent
+        $db->insert('product_types', [
+            'name'        => $name,
+            'tax_percent' => $tax_percent
         ])
     ) {
         //return last id
