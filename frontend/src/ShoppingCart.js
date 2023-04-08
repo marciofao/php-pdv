@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const items = [
+/* const items = [
     {
         "id": 1,
         "name": "cadeira",
@@ -25,7 +25,7 @@ const items = [
         "product_type": null,
         "tax_percent": null
     }
-]
+] */
 
 
 /* async function fetch_data() {
@@ -51,7 +51,34 @@ const items = []; */
 
 
 function ShoppingCart() {
+    const [items, setItems] = useState([])
     const [cart, setCart] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+        fetch('http://localhost:8080/?api=get_products')
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                throw response;
+            })
+            .then(data => {
+                setItems(data)
+                console.log(items)
+            })
+            .catch(error => {
+                console.error("Error fetching data: ", error)
+                setError(error)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }, [])
+
+    if (loading) return "Loading..."
+    if (error) return "Error!"
 
     const addToCart = (item) => {
         const cartCopy = [...cart]

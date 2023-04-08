@@ -16,7 +16,9 @@
 O projeto utiliza composer, antes de iniciar é necessário rodar:
 `composer install`
 
-Para iniciar a aplicação: `php -S localhost:8080`
+Para iniciar o backend (na raiz da aplicação): `php -S localhost:8080`
+
+Para iniciar o frontend (em outro terminal na pasta frontend): `npm start`
 
 #Testes
 
