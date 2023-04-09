@@ -1,54 +1,5 @@
 import { useEffect, useState } from 'react'
 
-/* const items = [
-    {
-        "id": 1,
-        "name": "cadeira",
-        "value": "20",
-        "product_type_id": 1,
-        "product_type": "regular",
-        "tax_percent": "10"
-    },
-    {
-        "id": 2,
-        "name": "test",
-        "value": "2",
-        "product_type_id": 1,
-        "product_type": "regular",
-        "tax_percent": "10"
-    },
-    {
-        "id": 68,
-        "name": "test2",
-        "value": "30.5",
-        "product_type_id": null,
-        "product_type": null,
-        "tax_percent": null
-    }
-] */
-
-
-/* async function fetch_data() {
-
-    fetch('http://localhost:8080/?api=get_products', {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-        },
-    })
-        .then(response => {
-            return response.json()
-        })
-        .then(response => console.log(JSON.stringify(response)))
-    // .then(response => console.log(response.stringfy))
-
-
-}
-fetch_data();
-//const items = fetch_data();
-const items = []; */
-
-
 
 function ShoppingCart() {
     const [items, setItems] = useState([])
@@ -77,8 +28,8 @@ function ShoppingCart() {
             })
     }, [])
 
-    if (loading) return "Loading..."
-    if (error) return "Error!"
+    if (loading) return "Carregando..."
+    if (error) return "Erro!"
 
     const addToCart = (item) => {
         const cartCopy = [...cart]
@@ -108,20 +59,21 @@ function ShoppingCart() {
     }
     return (
         <div>
-            <h1>Shopping Cart</h1>
+            <h1>Carrinho de compras</h1>
             <div className='cart'>
                 <div className='items'>
-                    <h2>Items</h2>
+                    <h2>Produtos</h2>
                     {items.map(item => (
                         <div key={item.name}>
                             <h3>{item.name}</h3>
-                            <p>${item.value}</p>
-                            <button onClick={() => addToCart(item)}>Add to Cart</button>
+                            <p>${Number(item.value).toFixed(2)}</p>
+                            <p><small>Taxa: ${Number((item.tax_percent / 100) * item.value).toFixed(2)}</small></p>
+                            <button onClick={() => addToCart(item)}>Adicionar</button>
                         </div>)
                     )}
                 </div>
                 <div>
-                    <h2>Cart</h2>
+                    <h2>Carrinho</h2>
                     {cart.map(item => (
                         <div key={item.name}>
                             <h3>{item.name}</h3>
@@ -130,13 +82,14 @@ function ShoppingCart() {
                                 {item.quantity}
                                 <button onClick={() => increase(item.name)}>+</button>
                             </p>
-                            <p>Subtotal: ${Number(item.quantity * item.value).toFixed(2)}</p>
+                            <p>Subtotal: ${Number((item.quantity * item.value) + (item.quantity * item.value) * (item.tax_percent / 100)).toFixed(2)}</p>
+                            <p></p>
                         </div>
                     ))}
                 </div>
             </div>
             <div className='total'>
-                <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value)), 0)).toFixed(2)}</h2>
+                <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value) + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0)).toFixed(2)}</h2>
             </div>
         </div >
     )

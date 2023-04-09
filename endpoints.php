@@ -26,7 +26,7 @@ if (isset($_GET['api'])) {
         die($res);
     }
 
-    //Endpoint?api=delete_product
+    //Endpoint?api=delete_product&id=1
     if ($method == 'delete_product') {
         $res = delete_product($_GET['id']);
         $res = json_encode($res);
@@ -54,7 +54,7 @@ if (isset($_GET['api'])) {
         die($res);
     }
 
-    //Endpoint?api=delete_product_type
+    //Endpoint?api=delete_product_type&id=1
     if ($method == 'delete_product_type') {
         $res = delete_product_type($_GET['id']);
         $res = json_encode($res);
