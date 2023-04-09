@@ -74,7 +74,7 @@ function Categories() {
 
     return (
         <div className='tac'>
-            <h1>Cadastrar Categorias</h1>
+            <h1>Cadastrar Categoria</h1>
             <div className="form">
                 <form onSubmit={handleSubmit}>
                     <input
@@ -100,12 +100,16 @@ function Categories() {
 
             <div className='items tac'>
 
-                <h2>Categorias existentes</h2>
+                <h2>Categorias existentes:</h2>
                 {items.map(item => (
                     <div key={item.id} id={"cat" + item.id}>
-                        <h3>{item.name}</h3>
-                        <p>${Number(item.tax_percent).toFixed(2)}%</p>
-                        <button className='del' onClick={() => removeItem(item.id)}>Excluir</button>
+                        <p>
+                            <b>{item.name}</b> - {Number(item.tax_percent).toFixed(2)}%
+                            <button className='del' onClick={() => removeItem(item.id)}>
+                                Excluir
+                            </button>
+                        </p>
+
                     </div>)
                 )}
             </div>
