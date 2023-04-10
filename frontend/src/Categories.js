@@ -4,6 +4,9 @@ function Categories() {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    let updated = 0;
+
+
     const [name, setName] = useState("");
     const [taxPercent, setTaxPercent] = useState("");
 
@@ -15,7 +18,7 @@ function Categories() {
                 if (response.ok) {
                     setName('')
                     setTaxPercent('')
-                    fetcher() //update list
+                    updated++
                     return response.json()
 
                 }
@@ -48,7 +51,7 @@ function Categories() {
             })
     }
 
-    const fetcher = () => {
+    useEffect(() => {
         fetch('http://localhost:8080/?api=get_product_types')
             .then(response => {
                 if (response.ok) {
@@ -67,8 +70,7 @@ function Categories() {
             .finally(() => {
                 setLoading(false)
             })
-    }
-    fetcher()
+    }, [updated])
 
     if (loading) return "Carregando..."
     if (error) return "Erro!"

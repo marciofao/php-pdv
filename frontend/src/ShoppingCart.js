@@ -123,8 +123,7 @@ function ShoppingCart() {
                 <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value) + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0)).toFixed(2)}</h2>
                 {/*                 <h2>Total taxas: ${Number(taxes.reduce((acc, i) => acc + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0).toFixed(2)}</h2> */}
             </div>
-            <div className='tac'>
-
+            <div className={cart == [] ? "tac" : "hidden"}>
                 <button onClick={() => makeSell()}>Vender</button>
             </div>
         </div >

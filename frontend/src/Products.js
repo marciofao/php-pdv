@@ -6,10 +6,12 @@ function Products() {
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    let updated = 0
 
     const [name, setName] = useState("");
     const [value, setValue] = useState("");
     const [type, setType] = useState("");
+
 
     let handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +21,7 @@ function Products() {
                     setName('')
                     setValue('')
                     setType('')
-                    fetcher() //update list
+                    updated++
                     return response.json()
 
                 }
@@ -34,7 +36,7 @@ function Products() {
             })
     }
 
-    const fetcher = () => {
+    useEffect(() => {
         fetch('http://localhost:8080/?api=get_products')
             .then(response => {
                 if (response.ok) {
@@ -53,8 +55,7 @@ function Products() {
             .finally(() => {
                 setLoading(false)
             })
-    }
-    fetcher()
+    }, [updated])
 
     const removeItem = (id) => {
         fetch('http://localhost:8080/?api=delete_product&id=' + id)
