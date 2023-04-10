@@ -5,6 +5,7 @@ require_once('config.php');
 require_once('database.php');
 require_once('product_controller.php');
 require_once('product_types_controller.php');
+require_once('sells_controller.php');
 require_once('endpoints.php');
 
 

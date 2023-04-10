@@ -61,9 +61,23 @@ if (isset($_GET['api'])) {
         die($res);
     }
 
+    //Endpoint?api=get_sells
+    if ($method == 'get_sells') {
+        $res = get_sells();
+        $res = json_encode($res);
+        die($res);
+    }
+
     //Endpoint?api=set_sell&value=34&tax=3&items='[]'
     if ($method == 'set_sell') {
         $res = set_sell($_GET['value'], $_GET['tax'], $_GET['items']);
+        $res = json_encode($res);
+        die($res);
+    }
+
+    //Endpoint?api=delete_sell&id=1
+    if ($method == 'delete_sell') {
+        $res = delete_sell($_GET['id']);
         $res = json_encode($res);
         die($res);
     }
