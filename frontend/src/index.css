@@ -9,6 +9,13 @@ body {
   display: none;
 }
 
+.sellbtn {
+  cursor: pointer;
+}
+.sellbtn:hover {
+  background-color: lightgreen;
+}
+
 nav {
   position: fixed;
   width: 100%;
