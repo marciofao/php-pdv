@@ -97,7 +97,7 @@ function Products() {
     if (error) return "Erro!"
 
     return (
-        <div className='tac'>
+        <div className='tac products hidden'>
             <h1>Cadastrar produto</h1>
             <div className="form">
                 <form onSubmit={handleSubmit}>

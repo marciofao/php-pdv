@@ -73,7 +73,7 @@ function Categories() {
     if (error) return "Erro!"
 
     return (
-        <div className='tac'>
+        <div className='tac categories hidden'  >
             <h1>Cadastrar Categoria</h1>
             <div className="form">
                 <form onSubmit={handleSubmit}>

@@ -1,5 +1,5 @@
 import ShoppingCart from './ShoppingCart.js';
-import NavBar from './NavBar.js';
+import Navbar from './Navbar.js';
 import Products from './Products.js';
 import Categories from './Categories.js';
 import './App.css';
@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <>
-      <NavBar />
+      <Navbar />
       <Products />
       <Categories />
       <ShoppingCart />

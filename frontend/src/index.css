@@ -5,6 +5,9 @@ body {
 #root {
   margin-top: 46px;
 }
+.hidden {
+  display: none;
+}
 
 nav {
   position: fixed;

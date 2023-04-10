@@ -58,9 +58,9 @@ function ShoppingCart() {
         setCart(cartCopy)
     }
     return (
-        <div>
+        <div className='shopping'>
             <h1>Carrinho de compras</h1>
-            <div className='cart'>
+            <div className='cart '>
                 <div className='items'>
                     <h2>Produtos</h2>
                     {items.map(item => (
