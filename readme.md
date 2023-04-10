@@ -13,6 +13,10 @@
 
 -Necessário ter instalado PostgreSQL
 
+#Banco de dados
+
+- Dump do banco incluido no arquivo `pdv.dump`
+
 Detalhes de configuração do banco de dados são configurados no arquivo `config.php`
 
 O projeto utiliza composer, antes de iniciar é necessário rodar:
