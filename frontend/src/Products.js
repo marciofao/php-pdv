@@ -20,7 +20,7 @@ function Products() {
                     setName('')
                     setValue('')
                     setType('')
-                    // setUpdated(updated++)
+                    fetcher() //update list
                     return response.json()
 
                 }
@@ -35,7 +35,7 @@ function Products() {
             })
     }
 
-    useEffect(() => {
+    const fetcher = () => {
         fetch('http://localhost:8080/?api=get_products')
             .then(response => {
                 if (response.ok) {
@@ -54,7 +54,8 @@ function Products() {
             .finally(() => {
                 setLoading(false)
             })
-    }, [])
+    }
+    fetcher()
 
     const removeItem = (id) => {
         fetch('http://localhost:8080/?api=delete_product&id=' + id)

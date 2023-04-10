@@ -18,7 +18,7 @@ function Categories() {
                 if (response.ok) {
                     setName('')
                     setTaxPercent('')
-                    updated++
+                    fetcher() //update list
                     return response.json()
 
                 }
@@ -51,7 +51,7 @@ function Categories() {
             })
     }
 
-    useEffect(() => {
+    const fetcher = () => {
         fetch('http://localhost:8080/?api=get_product_types')
             .then(response => {
                 if (response.ok) {
@@ -70,7 +70,8 @@ function Categories() {
             .finally(() => {
                 setLoading(false)
             })
-    }, [updated])
+    }
+    fetcher()
 
     if (loading) return "Carregando..."
     if (error) return "Erro!"
