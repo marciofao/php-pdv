@@ -4,6 +4,8 @@ function Categories() {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    let [updated, setUpdated] = useState(0)
+
 
     const [name, setName] = useState("");
     const [taxPercent, setTaxPercent] = useState("");
@@ -16,6 +18,7 @@ function Categories() {
                 if (response.ok) {
                     setName('')
                     setTaxPercent('')
+                    // setUpdated(updated++)
                     return response.json()
 
                 }
@@ -67,7 +70,7 @@ function Categories() {
             .finally(() => {
                 setLoading(false)
             })
-    }, [])
+    }, [updated])
 
     if (loading) return "Carregando..."
     if (error) return "Erro!"

@@ -6,6 +6,7 @@ function Products() {
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    let [updated, setUpdated] = useState(0)
 
     const [name, setName] = useState("");
     const [value, setValue] = useState("");
@@ -19,6 +20,7 @@ function Products() {
                     setName('')
                     setValue('')
                     setType('')
+                    // setUpdated(updated++)
                     return response.json()
 
                 }
