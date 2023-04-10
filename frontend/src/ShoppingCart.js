@@ -7,6 +7,7 @@ function ShoppingCart() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+
     useEffect(() => {
         fetch('http://localhost:8080/?api=get_products')
             .then(response => {
@@ -40,6 +41,36 @@ function ShoppingCart() {
         } else {
             setCart(prevCart => [...prevCart, { ...item, quantity: 1 }])
         }
+    }
+    const makeSell = () => {
+        console.log(cart)
+        let total = 0;
+        let taxes = 0;
+        for (let i in cart) {
+            total += Number(Number(cart[i].value * cart[i].quantity) + (Number(cart[i].value) * cart[i].tax_percent / 100));
+            taxes += Number((Number(cart[i].value * cart[i].quantity) * cart[i].tax_percent / 100))
+        }
+        console.log(total)
+        console.log(taxes)
+        console.log(JSON.stringify(cart))
+        saveSell(total, taxes, JSON.stringify(cart))
+    }
+    const saveSell = async (total, taxes, items) => {
+        fetch('http://localhost:8080/?api=set_sell&value=' + total + '&taxes=' + taxes + '&items=' + items)
+            .then(response => {
+                if (response.ok) {
+                    setCart([])
+                    return response.json()
+                }
+                throw response;
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => {
+                console.error("Error fetching data: ", error)
+                setError(error)
+            })
     }
     const increase = name => {
         const cartCopy = [...cart]
@@ -90,7 +121,10 @@ function ShoppingCart() {
             </div>
             <div className='total'>
                 <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value) + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0)).toFixed(2)}</h2>
-                {/* <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0).toFixed(2)}</h2> */}
+                {/*                 <h2>Total taxas: ${Number(taxes.reduce((acc, i) => acc + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0).toFixed(2)}</h2> */}
+            </div>
+            <div className='tac'>
+                <button onClick={() => makeSell()}>Vender</button>
             </div>
         </div >
     )

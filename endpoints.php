@@ -68,9 +68,9 @@ if (isset($_GET['api'])) {
         die($res);
     }
 
-    //Endpoint?api=set_sell&value=34&tax=3&items='[]'
+    //Endpoint?api=set_sell&value=34&taxes=3&items='[]'
     if ($method == 'set_sell') {
-        $res = set_sell($_GET['value'], $_GET['tax'], $_GET['items']);
+        $res = set_sell($_GET['value'], $_GET['taxes'], $_GET['items']);
         $res = json_encode($res);
         die($res);
     }
