@@ -13,6 +13,8 @@
 
 -Necessário ter instalado PostgreSQL
 
+Detalhes de configuração do banco de dados são configurados no arquivo `config.php`
+
 O projeto utiliza composer, antes de iniciar é necessário rodar:
 `composer install`
 
