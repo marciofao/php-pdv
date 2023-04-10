@@ -16,7 +16,7 @@
 O projeto utiliza composer, antes de iniciar é necessário rodar:
 `composer install`
 
-Build do frontend está incluido no repo
+Build do frontend está incluido no repo.
 Para iniciar o backend rodar no terminal(na raiz da aplicação): `php -S localhost:8080`
 
 #Testes
