@@ -7,6 +7,7 @@ function Navbar() {
         document.querySelector('.products').classList.add("hidden")
         document.querySelector('.shopping').classList.add("hidden")
         document.querySelector('.categories').classList.add("hidden")
+        document.querySelector('.sells').classList.add("hidden")
     }
 
     const show = (id) => {
@@ -19,6 +20,9 @@ function Navbar() {
         <nav>
             <button onClick={() => show("shopping")} >
                 Carrinho de compras
+            </button>
+            <button onClick={() => show("sells")} >
+                Vendas
             </button>
             <button onClick={() => show("products")}>
                 Produtos

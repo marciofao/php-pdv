@@ -4,7 +4,7 @@ function Categories() {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    let [updated, setUpdated] = useState(0)
+    let updated = 0;
 
 
     const [name, setName] = useState("");
@@ -18,7 +18,7 @@ function Categories() {
                 if (response.ok) {
                     setName('')
                     setTaxPercent('')
-                    // setUpdated(updated++)
+                    updated++
                     return response.json()
 
                 }

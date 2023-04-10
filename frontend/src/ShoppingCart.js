@@ -90,6 +90,7 @@ function ShoppingCart() {
             </div>
             <div className='total'>
                 <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value) + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0)).toFixed(2)}</h2>
+                {/* <h2>Total: ${Number(cart.reduce((acc, i) => acc + (i.quantity * Number(i.value) * (i.tax_percent / 100))), 0).toFixed(2)}</h2> */}
             </div>
         </div >
     )
